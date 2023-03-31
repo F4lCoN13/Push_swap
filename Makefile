@@ -28,7 +28,7 @@ LIGHT_GRAY = \033[0;37m
 WHITE = \033[1;37m
 END = \033[0m
 
-NAME					=		push_swap
+NAME = push_swap
 
 MAKEFLAGS			+=		--no-print-directory
 
@@ -40,20 +40,22 @@ CC						=		gcc
 
 CFLAGS				=		-Wall -Wextra -Werror -g3
 
-LDFLAGS				=		-L./lib -lmy_lib 
+LDFLAGS				=		lib/libftmy_lib.a 
 
-SRCS					=		$(addprefix $(SRC_DIR)/, test.c)
+SRCS					=		$(addprefix $(SRC_DIR)/, 					\
+								main.c											\
+								find_error.c)
 
 OBJS					=		$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-HEADER				=		include/headerprintf.h
+HEADER				=		include/headerpush_swap.h
 
 PATH_INC				=		./include/
 
 all:		lib $(NAME)
 
-$(NAME):	 $(OBJS)
-			 $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
+$(NAME):	$(OBJS)
+	      $(CC) $(CFLAGS)  $(OBJS) $(LDFLAGS) -o $(NAME)
 
 lib:
 			 @echo "$(YELLOW)Lauch Makefile lib ...$(END)"
@@ -68,11 +70,10 @@ clean:
 			 @rm -rf $(OBJ_DIR)
 			 @make -C lib/ clean
 
-fclean: clean
+fclean:	clean
 			 @rm -f $(NAME)
 			 @make -C lib/ fclean
 
-re: fclean all
+re:	fclean all
 
 .PHONY: all clean fclean re lib
-
