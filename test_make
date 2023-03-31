@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/31 12:03:00 by paumarc2          #+#    #+#              #
-#    Updated: 2023/03/31 12:03:03 by paumarc2         ###   ########.fr        #
+#    Created: 2023/03/30 10:23:11 by paumarc2          #+#    #+#              #
+#    Updated: 2023/03/30 10:23:17 by paumarc2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIGHT_GRAY = \033[0;37m
 WHITE = \033[1;37m
 END = \033[0m
 
-NAME					=		push_swap
+NAME              =     push_swap
 
 MAKEFLAGS			+=		--no-print-directory
 
@@ -50,17 +50,22 @@ HEADER				=		include/headerprintf.h
 
 PATH_INC				=		./include/
 
-all:		lib $(NAME)
 
-$(NAME):	 $(OBJS)
-			 $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
+all:     lib $(NAME) 
+
+$(NAME): $(OBJS)
+         $(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME)
+
+						      
 
 lib:
-			 @echo "$(YELLOW)Lauch Makefile lib ...$(END)"
-			 @make -C lib/
+          @echo "$(YELLOW)Lauch Makefile lib ...$(END)"
+	       @make -C lib/ 
 			 @echo "$(LIGHT_GREEN)lib is ready  $(END)"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
+								 
+
+$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c $(HEADER)
 			 @mkdir -p $(@D)
 			 $(CC) $(CFLAGS) -I$(PATH_INC) -c $< -o $@
 
@@ -68,11 +73,10 @@ clean:
 			 @rm -rf $(OBJ_DIR)
 			 @make -C lib/ clean
 
-fclean: clean
-			 @rm -f $(NAME)
+fclean:	clean
+          @rm -f $(NAME)
 			 @make -C lib/ fclean
 
-re: fclean all
+re:		fclean all
 
-.PHONY: all clean fclean re lib
-
+.PHONY: all clean fclean re
