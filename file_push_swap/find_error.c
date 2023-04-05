@@ -20,16 +20,14 @@ int   ft_just_nb(char **argv)
 {
      size_t i;
      size_t j;
-     size_t nb;
 
      i = 1;
-     nb = 0;
      while (argv[i])
      {
           j = 0;
           while (argv[i][j])
           {
-               if ((argv[i][j] < 48 || argv[i][j] > 58) && argv[i][j] != 32)
+               if ((argv[i][j] < 48 || argv[i][j] > 58) && argv[i][j] != 32 && argv[i][j] != '-') //demander a batbat si il faut gerer les plus 
                     return (0);
                j++;
           }
@@ -40,21 +38,52 @@ int   ft_just_nb(char **argv)
 
 int   ft_limit(char **argv)
 {
-     //int total_nb[INT_MAX];
-     size_t i;
-     size_t j;
-
+     int    i;
+     int    j;
+     long    nb;
+     int    u;
+     int    sign;
+     char   **ptr;
+    
      i = 1;
      while (argv[i])
      {
-         j = ft_atoi(argv[i]);
-         printf("\ntest j = %ld\n", j);
-         i++;
+          ptr = ft_split(argv[i], ' ');
+          if(ptr[0][0])
+          {
+               j = 0;
+               nb = 0;
+               u = 0;
+               sign = 1;
+               while (ptr[j])
+               {
+                    if (ptr[j][u] == '-')
+                    {
+                         sign = -1;
+                         u++;;
+                    }
+                    while (ptr[j][u])
+                    {
+                         printf("nb wl = %ld\n", nb);
+                         nb = nb * 10 + (ptr[j][u] - 48);
+                         u++;
+                    }
+                    printf("\nnb = %ld\n", nb);
+                    printf("\nsign = %d\n", sign);
+                    nb = nb * sign;
+                    printf("\nnb = %ld\n", nb);
+                    if (nb > INT_MAX || nb < INT_MIN)
+                         return (0);
+                    j++;
+               }
+          }
+          i++;
      }
      return (1);
 }
+                     // Je pense avoir la solution, je prend en compte le signe, puis j ajoute chaque dizaine a mon nombre et je verifie a chaque fois que mon nombre et bien dans les clous [[if (214748364 * 10 > INT_MAX) ft_printf("bonne idee");]]
 
-int   ft_nb_max(char   **argv)
+/*int   ft_nb_max(char   **argv)
 {
      int i;
      int j;
@@ -63,23 +92,23 @@ int   ft_nb_max(char   **argv)
      while (argv[i])
      {
           j = 0;
-          if (argv[i][j] 
+          if (argv[i][j])
+               exit;
      }
      return (-1);
      return (-2);
-}
+}*/
 
 int	ft_find_error_and_init_list(char	**argv)
 {
-     int i;
+     //int i;
 
-     if (!argv[1])
-          return (0);
      if ((ft_just_nb(argv)) == 0)
           return (0);
      if(ft_limit(argv) == 0)
           return (0);
-     i = ft_nb_max(argv);
+
+     //i = ft_nb_max(argv);
      return (1);
 }
 
