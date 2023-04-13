@@ -40,7 +40,7 @@ CC						=		gcc
 
 CFLAGS				=		-Wall -Wextra -Werror -g3
 
-LDFLAGS				=		lib/libftmy_lib.a 
+LDFLAGS				=		lib/libmy_lib.a 
 
 SRCS					=		$(addprefix $(SRC_DIR)/, 					\
 								main.c											\

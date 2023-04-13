@@ -1,4 +1,4 @@
-#ifndef HEADERPUSH_SWAP_
+#ifndef HEADERPUSH_SWAP_H
 # define HEADERPUSH_SWAP_H
 
 # include "headerprintf.h"
