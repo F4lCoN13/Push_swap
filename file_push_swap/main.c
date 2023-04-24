@@ -4,7 +4,7 @@ int   main(int argc, char **argv)
 {
      t_chain   *head;
      t_chain   *tail;
-     int i;
+     int    i;
 
      i = 1;
      head = NULL;

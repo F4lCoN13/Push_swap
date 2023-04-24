@@ -57,11 +57,13 @@ all:		lib $(NAME)
 
 $(NAME):	$(OBJS)
 	      $(CC) $(CFLAGS)  $(OBJS) $(LDFLAGS) -o $(NAME)
+	      @echo "\n				        $(LIGHT_GREEN)CREATION OF EXEC PUSH_SWAP ...$(END)\n"
+
 
 lib:
 			 @echo "$(YELLOW)Lauch Makefile lib ...$(END)"
 			 @make -C lib/
-			 @echo "$(LIGHT_GREEN)lib is ready  $(END)"
+			 @echo "\n\n\n$(LIGHT_GREEN)lib is ready  $(END)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 			 @mkdir -p $(@D)
@@ -69,11 +71,13 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADER)
 
 clean:
 			 @rm -rf $(OBJ_DIR)
+			 @echo "\n					$(RED)DELETION .o PUSH_SWAP ... $(END)"
 			 @make -C lib/ clean
 
 fclean:	clean
 			 @rm -f $(NAME)
 			 @make -C lib/ fclean
+			 @echo "\n					$(RED)DELETION EXEC PUSH_SWAP    ... $(END)"
 
 re:	fclean all
 

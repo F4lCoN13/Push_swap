@@ -119,7 +119,7 @@ $(NAME): $(OBJS)
 	 $(RAN) $(NAME)
 	 @echo "\n				        $(LIGHT_GREEN)UPDATE  PRINTF       ...$(END)\n"
 	 @echo "\n						$(LIGHT_GREEN)... $(END)"
-	 @echo "\n				        $(LIGHT_GREEN)UPDATE  PRINTF       ...$(END)\n"
+	 @echo "\n				        $(LIGHT_GREEN)UPDATE  LIBFT       ...$(END)\n"
 	 @echo "\n						$(LIGHT_GREEN)... $(END)"
 	 @echo "\n				        $(LIGHT_GREEN)UPDATE GET_NEXT_LINE ...$(END)\n"
 	 @echo "$(LIGHT_RED)         __      __        .__  $(LIGHT_YELLOW).__              $(LIGHT_GREEN).__          $(LIGHT_BLUE)           ._.$(LIGHT_PURPLE)_._.	$(END)"
@@ -151,10 +151,10 @@ clean:
 	@echo "\n					$(RED)	... $(END)"
 	@echo "\n					$(RED)DELETION .o GET_NEXT_LINE ... $(END)"
 
-fclean: clean
+fclean: #clean
 	@rm -f $(NAME)
 	@echo "\n					$(RED)	... $(END)"
-	@echo "\n					$(RED)DELETION PRINTF.A    ... $(END)"
+	@echo "\n					$(RED)DELETION LIBMY_LIB.A    ... $(END)"
 
 re: fclean all
 
