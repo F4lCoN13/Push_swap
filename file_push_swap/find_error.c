@@ -12,11 +12,6 @@
 
 #include "../include/headerpush_swap.h"
 
-/////////////////////////////////////////////////////////////////////////////////////////
-/* Je veux dans un premier temps verifier qu il n y est pas de doublon entre les differents chiffres, dans la fonction precedente je verifie si il y a bien que des chiffres! Je suis en train de reflechir a l'ordre dans lequel je vais effectuer mes actions sachant que je dois verifier les erreurs (que ce sont bien que des chiffres, qu il n y a pas de doublon et qu il tienne bien tous dans un int). Ducoup je voulais faire un tableau pour refaire la technique d un tableau askii, mais je me dit qu'il faudais peut etre que je cree directement et remplisse au fur et a mesure ma structure de liste chainer! */
-/////////////////////////////////////////////////////////////////////////////////////////
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////
 //FR: Cette fonction est-la pour verifier que tous les caracteres soient uniquement des ascii compris entre 0 et 9, des ' ' et des + ou -
 //EN: This function is there to verify that all characters are only ASCII characters between 0 and 9, spaces, and plus or minus signs.
@@ -32,8 +27,9 @@ int   ft_just_nb(char **argv)
           j = 0;
           while (argv[i][j])
           {
-               if ((argv[i][j] < 48 || argv[i][j] > 58) && argv[i][j] != 32 && argv[i][j] != '-') //demander a batbat si il faut gerer les plus 
-                    return (0);
+               if ((argv[i][j] < 48 || argv[i][j] > 58) && argv[i][j] != 32 
+                         && argv[i][j] != '-' && argv[i][j] != '+')
+                    return (-1);
                j++;
           }
           i++;
@@ -41,95 +37,83 @@ int   ft_just_nb(char **argv)
      return (i);
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////
-///FR: Fonction pour regarder si il y a des doublons
-///EN: Fonction for tchek if there is double number
-/////////////////////////////////////////////////////////////////////////////////////////////////
+//ATTENTION A VOIR SI IL FAUT METTRE LES '+' OU PAS 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+/////////FR: Fonction pour obtenir les nombre totaux et verifier la taille maximum///////////////
+///////////EN: Function to obtain the total numbers and check the maximum size///////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 int   ft_new_size(char **argv)
 {
-     int i;
-     int k;
-     int n;
-     int j;
-     int count;
-     char **ptr;
-     
-     count = 0;
-     i = 0;
-     while (argv[i])
+     t_sct sct; 
+
+     sct.count = 0;
+     sct.i = 1;
+     while (argv[sct.i])
      {
-          ptr = ft_split(argv[i], ' ');
-          if(ptr[0][0])
+          sct.ptr = ft_split(argv[sct.i], ' ');
+          sct.k = 0;
+          while (sct.ptr[sct.k])
           {
-               k = 0;
-               j = 0;
-               while (ptr[k][j])
-               {
-                    printf("coucou");
-                    while(ptr[i][j] == '0' || ptr[i][j] == ' ' || ptr[i][j] == '+' || ptr[i][j] == '-')
-                    {
-                         j++;
-                    }
-                    n = 0;
-                    while (ptr[i][j] >= '0' && ptr[i][j] <= '9')
-                    {
-                         if (n == 12)
-                              return (-1);
-                         n++;
-                         j++;
-                    }
-                    count += 1;
-                    k++;
-               }
+               sct.j = 0;
+               sct.j = ft_find_nb(sct.ptr[sct.k]);
+               if (sct.j == -1)
+                    return (-1);
+               if (sct.j > 0)
+                    sct.count += 1;
+               sct.k +=  1;
+               ft_printf("\nsize nb = %d \n", sct.j);
           }
-          i++;
+          sct.i++;
      }
-     return (count);
+     // Penser a free ptr
+     return (sct.count);
 }
-     
+
 int   **ft_limit(char **argv)
 {
-     int    i;
-     int    j;
-     long    nb;
-     int    u;
-     int    sign;
-     char   **ptr;
+     //t_sct  sct;
+     //New
      int    **tab;
-    
-     i = 1;
-     printf("\ncount = %d\n\n", ft_new_size(++argv));
-     while (argv[i])
+     int    size;
+
+     //ft_printf("\nsortis de la fonctions count  = %d\n\n", ft_new_size(argv));
+     size = ft_new_size(argv);
+     ft_printf("size = %d\n", size);
+     tab = malloc(sizeof(int *) * (size + 1));
+     if (tab == NULL)
+          return (NULL);//a voir a la fin quand j aurais reminter mon tableau
+     ft_feed_tab(tab, size, argv);
+
+
+
+
+     /*while (argv[i])
      {
           ptr = ft_split(argv[i], ' ');
-          printf("res ptr = %s\n", ptr[0]);
-          if(ptr[0][0])
+          j = 0;
+          nb = 0;
+          u = 0;
+          sign = 1;
+          while (ptr[j])
           {
-               j = 0;
-               nb = 0;
-               u = 0;
-               sign = 1;
-               while (ptr[j])
+               if (ptr[j][u] == '-')
                {
-                    if (ptr[j][u] == '-')
-                    {
-                         sign = -1;
-                         u++;
-                    }
-                    while (ptr[j][u])
-                    {
-                         nb = nb * 10 + (ptr[j][u] - 48);
-                         u++;
-                    }
-                    nb = nb * sign;
-                    if (nb > INT_MAX || nb < INT_MIN)
-                         return (0);
-                    j++;
+                    sign = -1;
+                    u++;
                }
+               while (ptr[j][u])
+               {
+                    nb = nb * 10 + (ptr[j][u] - 48);
+                    u++;
+               }
+               nb = nb * sign;
+               if (nb > INT_MAX || nb < INT_MIN)
+                    return (0);
+               j++;
           }
           i++;
-     }
+     }*/
      tab = malloc(sizeof(int *) * 2);
      tab[0] = malloc(sizeof(int) * 1);
      tab[0][0] = -1;
@@ -144,11 +128,11 @@ int	ft_find_error_and_init_list(char	**argv)
      //int i;
      int **tab;
 
-     if ((ft_just_nb(argv)) == 0)
-          return (0);
+     if ((ft_just_nb(argv)) == -1)
+          return (-1);
      tab = ft_limit(argv);
      if(tab[0][0] == -1)
-          return (0);
+          return (-1);
 
      //i = ft_nb_max(argv);
      return (1);

@@ -45,6 +45,7 @@ LDFLAGS				=		lib/libmy_lib.a
 SRCS					=		$(addprefix $(SRC_DIR)/, 					\
 								main.c											\
 								find_error.c									\
+								find_error_additional_1.c					\
 								test_t_chain.c)
 
 OBJS					=		$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
