@@ -62,7 +62,7 @@ int   ft_new_size(char **argv)
                if (sct.j > 0)
                     sct.count += 1;
                sct.k +=  1;
-               ft_printf("\nsize nb = %d \n", sct.j);
+               //ft_printf("\nsize nb = %d \n", sct.j);
           }
           sct.i++;
      }
@@ -70,20 +70,20 @@ int   ft_new_size(char **argv)
      return (sct.count);
 }
 
-int   **ft_limit(char **argv)
+unsigned int   **ft_limit(char **argv)
 {
      //t_sct  sct;
      //New
-     int    **tab;
-     int    size;
+     unsigned int    **tab;
+     int             size;
 
      //ft_printf("\nsortis de la fonctions count  = %d\n\n", ft_new_size(argv));
      size = ft_new_size(argv);
      ft_printf("size = %d\n", size);
-     tab = malloc(sizeof(int *) * (size + 1));
+     tab = malloc(sizeof(unsigned int *) * (size + 1));
      if (tab == NULL)
           return (NULL);//a voir a la fin quand j aurais reminter mon tableau
-     ft_feed_tab(tab, size, argv);
+     tab = ft_feed_tab(tab, size, argv);
 
 
 
@@ -113,11 +113,11 @@ int   **ft_limit(char **argv)
                j++;
           }
           i++;
-     }*/
+     }
      tab = malloc(sizeof(int *) * 2);
      tab[0] = malloc(sizeof(int) * 1);
-     tab[0][0] = -1;
-     ft_printf("fin de la fonction ft_limit\n");
+     tab[0][0] = -1;*/
+     ft_printf("\nfin de la fonction ft_limit\n");
      return (tab);
 }
                      // Je pense avoir la solution, je prend en compte le signe, puis j ajoute chaque dizaine a mon nombre et je verifie a chaque fois que mon nombre et bien dans les clous [[if (214748364 * 10 > INT_MAX) ft_printf("bonne idee");]]
@@ -126,12 +126,12 @@ int   **ft_limit(char **argv)
 int	ft_find_error_and_init_list(char	**argv)
 {
      //int i;
-     int **tab;
+     unsigned int **tab;
 
      if ((ft_just_nb(argv)) == -1)
           return (-1);
      tab = ft_limit(argv);
-     if(tab[0][0] == -1)
+     if(tab[0][0] == (unsigned int)-1)
           return (-1);
 
      //i = ft_nb_max(argv);
