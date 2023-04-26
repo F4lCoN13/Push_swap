@@ -25,8 +25,9 @@ typedef struct s_sct
 
 typedef struct s_tab
 {
-   int   *tab;
-   int   flag;
+   long  int   *t;
+   int         flag;
+   int         size;
 }  t_tab;
 
 void        ft_find_error_and_init_list(char ** argv, t_tab* tab);
@@ -34,4 +35,6 @@ void        ft_test_chain(t_chain** head_ref, t_chain** tail_ref, int index, int
 void        ft_print_chain(t_chain* head_ref);
 int         ft_find_nb(char *nptr);
 void        ft_feed_tab(long int **tab, int size, char **argv);
+void        ft_number(char **argv, t_tab* tab);
+int         ft_check_double(t_tab* tab, int size);
 #endif

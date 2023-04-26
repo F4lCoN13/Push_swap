@@ -23,12 +23,10 @@ int	ft_find_nb(char *nptr)
 
 	i = 0;
    n = 0;
-   while (nptr[i] == ' ')
-      i++;
-   while (nptr[i] == '0')
-      i++;
 	if ((nptr[i] == '+' || nptr[i] == '-') && (nptr[i + 1] >= '0' && nptr[i + 1] <= '9'))
         i++;
+   while (nptr[i] == '0' && nptr[i + 1] == '0')
+      i++;
 	while (nptr[i] >= '0' && nptr[i] <= '9' && nptr[i])
 	{
      n++;
@@ -40,81 +38,76 @@ int	ft_find_nb(char *nptr)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//////////////////////////FR: Equivalent atoi plus 0////////////////////////////
-//EN: 
+////////////////////////////FR: Atoi modifie////////////////////////////////////
+////////////////////////////EN: Atoi modifies///////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-int   ft_find_and_return_nb(char *nptr)
+long int   ft_find_and_return_nb(char *nptr)
 {
-     int          i;
-     long int nb;
-     int          neg;
+   int          i;
+   long int nb;
+   int          neg;
 
-     i = 0;
-     neg = 1;
-     nb = 0;
-     while (nptr[i] == ' ')
-          i++;
-     while (nptr[i] == '0')//a voir comment gerer le cas du 0
-         i++;
-     if (nptr[i] == '+' || nptr[i] == '-')
-     {
-          if (nptr[i] == '-')
-               neg *= -1;
-          i++;
-     }
-     while (nptr[i] >= '0' && nptr[i] <= '9')
-     {
-          nb = nb * 10 + (nptr[i] - 48);
-          i++;
-     }
-     ft_printf("NB = %d\n", nb);
-     return (nb * neg);
+   i = 0;
+   neg = 1;
+   nb = 0;
+   if ((nptr[i] == '+' || nptr[i] == '-') 
+         && (nptr[i + 1] >= '0' && nptr[i + 1] <= '9'))
+   {
+      if (nptr[i] == '-')
+         neg *= -1;
+      i++;
+   }
+   while (nptr[i] >= '0' && nptr[i] <= '9')
+   {
+      nb = nb * 10 + (nptr[i] - 48);
+      i++;
+   }
+   return (nb * neg);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //////////////////////FR: Remplissage du tableau////////////////////////////////
 /////////////////////////EN: Filling the array//////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-void   ft_number(char **argv, long int **tab)
+void   ft_number(char **argv, t_tab* tab)
 {
      t_sct sct; 
  
-     sct.i = 1;
-     sct.j = 1;
+     sct.i = 0;
      while (argv[sct.i])
      {
-          sct.ptr = ft_split(argv[sct.i], ' ');
-          sct.k = 0;
-          while (sct.ptr[sct.k])
-          {
-               tab[sct.j][0] = ft_find_and_return_nb(sct.ptr[sct.k]);
-               sct.j++;
-               sct.k++;
-          }
+               tab->t[sct.i] = ft_find_and_return_nb(argv[sct.i]);
           sct.i++;
-     }
+      }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-///////////FR: Malloc puis deviation vers remplissage du tableau////////////////
-///////////////EN: Malloc then branching to fill the array//////////////////////
+/////////FR: Regarder si les nommbres sont bien des int sans doublon////////////
+///////EN: Check if the numbers are indeed integers without duplicates//////////
 ////////////////////////////////////////////////////////////////////////////////
-void ft_feed_tab(long int **tab, int size, char **argv)
+int  ft_check_double(t_tab* tab, int size)
 {
-     t_sct sct;
+   int         i;
+   int         j;
 
-     sct.i = 0;
-     sct.j = 1;
-     while (sct.i < size) 
-     {
-          tab[sct.j] = malloc(sizeof(long int) * 2);
-          tab[sct.j][0] = sct.j;
-          if (!tab[sct.j])
-               return ;
-          sct.j++;
-          sct.i++;
-     }
-     ft_number(argv, tab);
-     sct.n = 0;
-     sct.k = 1;
+   i = 0;
+   while (i < size)
+   {
+      if ((tab->t[i] > INT_MAX) || (tab->t[i] < INT_MIN))
+         return (-1);
+      i++;
+   }
+   i = 0;
+   while (i < size)
+   {
+      j = i + 1;
+      while (j != size)
+      {
+         if (tab->t[i] == tab->t[j])
+            return (-1);
+         j++;
+      }
+      i++;
+   }
+      return (1);
 }

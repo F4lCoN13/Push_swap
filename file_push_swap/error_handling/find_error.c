@@ -40,79 +40,62 @@ int   ft_just_nb(char **argv)
      return (i);
 }
 
-//ATTENTION A VOIR SI IL FAUT METTRE LES '+' OU PAS 
-
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////FR: Fonction pour obtenir les nombre totaux et verifier la taille maximum///////////////
 ///////////EN: Function to obtain the total numbers and check the maximum size///////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 int   ft_new_size(char **argv)
 {
-     t_sct sct; 
-
-     sct.count = 0;
-     sct.i = 1;
-     while (argv[sct.i])
-     {
-          sct.ptr = ft_split(argv[sct.i], ' ');
-          sct.k = 0;
-          while (sct.ptr[sct.k])
-          {
-               sct.j = 0;
-               sct.j = ft_find_nb(sct.ptr[sct.k]);
-               if (sct.j == -1)
-                    return (-1);
-               if (sct.j > 0)
-                    sct.count += 1;
-               sct.k +=  1;
-               //ft_printf("\nsize nb = %d \n", sct.j);
-          }
-          sct.i++;
-     }
-     // Penser a free ptr
-     return (sct.count);
+   int   count;
+   int   i;
+   int   j;
+   
+   count = 0;
+   i = 0;
+   while (argv[i])
+   {
+      j = 0;
+      j = ft_find_nb(argv[i]);
+      if (j == -1)
+         return (-1);
+      if (j > 0)
+         count += 1;
+      i++;
+   }
+   return (count);
 }
 
-long int   *ft_limit(char **argv)
+/////////////////////////////////////////////////////////////////////////////////////////////////
+////////////FR: Commande les fonctions pour remplir le tableau avec les bon nombres//////////////
+////////////////EN: Command the functions to fill the array with good numbers////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////
+int   ft_limit(char **argv, t_tab* tab)
 {
-     t_sct  sct;
-     //New
-     long int    **tab;
-     int             size;
-     long int    *res;
 
-     sct.i = 0;
-     size = ft_new_size(argv);
-     ft_printf("size = %d\n", size);
-     tab = malloc(sizeof(long int *) * (size + 1));
-     if (tab == NULL)
-          return (NULL);//a voir a la fin quand j aurais reminter mon tableau
-     tab[0] = 0;
-     ft_feed_tab(tab, size, argv);
-     ft_printf("i = %d", sct.i);
-     ft_printf("\nTab est la ? = %d", tab[1][0]);
-     ft_printf("\nfin de la fonction ft_limit\n");
-     res = malloc(sizeof(long int) * (2));
-     res[0] = -1;
-     return (res);
+   tab->size = ft_new_size(argv);
+   ft_printf("size = %d\n", tab->size);
+   tab->t = malloc(sizeof(long int) * (tab->size));
+   if (tab->t == NULL)
+      return (-1);
+   ft_number(argv, tab);
+   if (ft_check_double(tab, tab->size) == -1)
+      return (-1);
+   return (1);
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+//FR: Lance toutes les fonctions pour les erreurs et recuperer le tableau avec les bon nombres///
+//////EN: Run all the functions for errors and retrieve the array with the correct numbers///////
+/////////////////////////////////////////////////////////////////////////////////////////////////
 void	ft_find_error_and_init_list(char	**argv, t_tab* tab)
 {
    
-   long int *array;
-
-   if ((ft_just_nb(argv)) == -1)
+   if (((ft_just_nb(argv)) == -1) || (ft_limit(argv, tab) == -1))
    {
       tab->flag = -1;
+      free(tab->t);
       return ;
    }
-   array = ft_limit(argv);
-     ft_printf("je suis la ");
-     if(array[0] == (long int)-1)
-          return ;
-     ft_printf("je suis la ");
-
-     //i = ft_nb_max(argv);
-     return ;
+   tab->flag = 1;
+   return ;
 }
