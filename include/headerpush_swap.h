@@ -26,5 +26,5 @@ int         ft_find_error_and_init_list(char ** argv);
 void        ft_test_chain(t_chain** head_ref, t_chain** tail_ref, int index, int value);
 void        ft_print_chain(t_chain* head_ref);
 int         ft_find_nb(char *nptr);
-unsigned int   **ft_feed_tab(unsigned int **tab, int size, char **argv);
+void        ft_feed_tab(unsigned int **tab, int size, char **argv);
 #endif

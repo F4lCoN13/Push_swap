@@ -72,18 +72,26 @@ int   ft_new_size(char **argv)
 
 unsigned int   **ft_limit(char **argv)
 {
-     //t_sct  sct;
+     t_sct  sct;
      //New
      unsigned int    **tab;
      int             size;
 
      //ft_printf("\nsortis de la fonctions count  = %d\n\n", ft_new_size(argv));
+     sct.i = 0;
      size = ft_new_size(argv);
      ft_printf("size = %d\n", size);
      tab = malloc(sizeof(unsigned int *) * (size + 1));
      if (tab == NULL)
           return (NULL);//a voir a la fin quand j aurais reminter mon tableau
-     tab = ft_feed_tab(tab, size, argv);
+     tab[0] = 0;
+     ft_feed_tab(tab, size, argv);
+     while (sct.i < size)
+     {
+        ft_printf("Res tab = %d\n", tab[sct.i][0]);
+        sct.i++;
+     }
+     //ft_printf("Res last = %d\n", tab[0]);
 
 
 

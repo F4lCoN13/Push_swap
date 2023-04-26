@@ -49,26 +49,28 @@ int   ft_find_and_return_nb(char *nptr)
 {
      int          i;
      unsigned int nb;
-     int          n;
+     int          neg;
 
      i = 0;
-     n = 1;
+     neg = 1;
      nb = 0;
-     while (nptr[i] == ' ' || nptr[i] == '0')
+     while (nptr[i] == ' ')
           i++;
-     if ((nptr[i] == '+' || nptr[i] == '-') && (nptr[i + 1] >= '0' && nptr[i + 1] <= '9'))
+     while (nptr[i] == '0')
+         i++;
+     if (nptr[i] == '+' || nptr[i] == '-')
      {
           if (nptr[i] == '-')
-               n += 1;
+               neg += 1;
           i++;
      }
-	  while (nptr[i] >= '0' && nptr[i] <= '9' && nptr[i])
+     while (nptr[i] >= '0' && nptr[i] <= '9')
      {
-          nb = nb * 10 + (nptr[i] + 48);
+          nb = nb * 10 + (nptr[i] - 48);
           i++;
      }
-     return (nb * n);
-     
+     printf("NB = %d", nb);
+     return (nb * neg);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -85,7 +87,7 @@ void   ft_number(char **argv, unsigned **tab)
      {
           sct.ptr = ft_split(argv[sct.i], ' ');
           sct.k = 0;
-          while (sct.ptr[sct.k])                                                               
+          while (sct.ptr[sct.k])
           {
                tab[sct.j][0] = ft_find_and_return_nb(sct.ptr[sct.k]);
                sct.j++;
@@ -99,18 +101,19 @@ void   ft_number(char **argv, unsigned **tab)
 //
 //
 ////////////////////////////////////////////////////////////////////////////////
-unsigned int  **ft_feed_tab(unsigned int **tab, int size, char **argv)
+void ft_feed_tab(unsigned int **tab, int size, char **argv)
 {
-     t_sct  sct;
-     
+     t_sct sct;
+
      sct.i = 0;
      sct.j = 1;
      while (sct.i < size) 
      {
           ft_printf("hello");
           tab[sct.j] = malloc(sizeof(unsigned int) * 2);
+          tab[sct.j][0] = sct.j;
           if (!tab[sct.j])
-               return (NULL);
+               return ;
           sct.j++;
           sct.i++;
      }
@@ -123,5 +126,4 @@ unsigned int  **ft_feed_tab(unsigned int **tab, int size, char **argv)
           sct.n++;
           sct.k++;
      }
-     return (tab);
 }
