@@ -23,14 +23,12 @@ int	ft_find_nb(char *nptr)
 
 	i = 0;
    n = 0;
-	while (nptr[i] == ' ' || nptr[i] == '0')
-		i++;
+   while (nptr[i] == ' ')
+      i++;
+   while (nptr[i] == '0')
+      i++;
 	if ((nptr[i] == '+' || nptr[i] == '-') && (nptr[i + 1] >= '0' && nptr[i + 1] <= '9'))
-   {
-        /*if (nptr[i] == '-')
-             n += 1;*/
         i++;
-   }
 	while (nptr[i] >= '0' && nptr[i] <= '9' && nptr[i])
 	{
      n++;
@@ -42,13 +40,13 @@ int	ft_find_nb(char *nptr)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//
-//
+//////////////////////////FR: Equivalent atoi plus 0////////////////////////////
+//EN: 
 ////////////////////////////////////////////////////////////////////////////////
 int   ft_find_and_return_nb(char *nptr)
 {
      int          i;
-     unsigned int nb;
+     long int nb;
      int          neg;
 
      i = 0;
@@ -56,12 +54,12 @@ int   ft_find_and_return_nb(char *nptr)
      nb = 0;
      while (nptr[i] == ' ')
           i++;
-     while (nptr[i] == '0')
+     while (nptr[i] == '0')//a voir comment gerer le cas du 0
          i++;
      if (nptr[i] == '+' || nptr[i] == '-')
      {
           if (nptr[i] == '-')
-               neg += 1;
+               neg *= -1;
           i++;
      }
      while (nptr[i] >= '0' && nptr[i] <= '9')
@@ -69,15 +67,15 @@ int   ft_find_and_return_nb(char *nptr)
           nb = nb * 10 + (nptr[i] - 48);
           i++;
      }
-     printf("NB = %d", nb);
+     ft_printf("NB = %d\n", nb);
      return (nb * neg);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//
-//
+//////////////////////FR: Remplissage du tableau////////////////////////////////
+/////////////////////////EN: Filling the array//////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-void   ft_number(char **argv, unsigned **tab)
+void   ft_number(char **argv, long int **tab)
 {
      t_sct sct; 
  
@@ -98,10 +96,10 @@ void   ft_number(char **argv, unsigned **tab)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//
-//
+///////////FR: Malloc puis deviation vers remplissage du tableau////////////////
+///////////////EN: Malloc then branching to fill the array//////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-void ft_feed_tab(unsigned int **tab, int size, char **argv)
+void ft_feed_tab(long int **tab, int size, char **argv)
 {
      t_sct sct;
 
@@ -109,8 +107,7 @@ void ft_feed_tab(unsigned int **tab, int size, char **argv)
      sct.j = 1;
      while (sct.i < size) 
      {
-          ft_printf("hello");
-          tab[sct.j] = malloc(sizeof(unsigned int) * 2);
+          tab[sct.j] = malloc(sizeof(long int) * 2);
           tab[sct.j][0] = sct.j;
           if (!tab[sct.j])
                return ;
@@ -120,10 +117,4 @@ void ft_feed_tab(unsigned int **tab, int size, char **argv)
      ft_number(argv, tab);
      sct.n = 0;
      sct.k = 1;
-     while (sct.n < size)
-     {
-          ft_printf("\ntab [%d] = %d", sct.n, tab[sct.k][0]);
-          sct.n++;
-          sct.k++;
-     }
 }
