@@ -7,6 +7,7 @@ typedef struct s_chain
 {
      int                nb;
      int                index;
+	 int				a_voir;
      struct s_chain*    prev;
      struct s_chain*    next;
 }  t_chain;
@@ -17,10 +18,7 @@ typedef struct s_sct
      int    k;
      int    j;
      int    count;
-     int    nb;
-     int    n;
      char   **ptr;
-     int    *tab;
 }  t_sct;
 
 typedef struct s_tab
@@ -37,4 +35,10 @@ int         ft_find_nb(char *nptr);
 void        ft_feed_tab(long int **tab, int size, char **argv);
 void        ft_number(char **argv, t_tab* tab);
 int         ft_check_double(t_tab* tab, int size);
+//void		ft_init_list();
+////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////TEST//////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+void		ft_test_chain(t_chain **head_ref, t_chain **tail_ref, int index, int value);
+void		ft_print_chain(t_chain *head_ref);
 #endif

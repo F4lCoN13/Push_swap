@@ -83,3 +83,4 @@ fclean:	clean
 re:	fclean all
 
 .PHONY: all clean fclean re lib
+#								chain_lists/init_list.c								\
