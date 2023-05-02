@@ -43,9 +43,12 @@ CFLAGS				=		-Wall -Wextra -Werror -g3
 LDFLAGS				=		lib/libmy_lib.a 
 
 SRCS					=		$(addprefix $(SRC_DIR)/, 							\
-								main.c													\
+								all_main/main.c										\
+								all_main/main_lst.c									\
 								error_handling/find_error.c						\
 								error_handling/find_error_additional.c			\
+								chain_lists/init_list.c								\
+								chain_lists/init_indexing_int.c					\
 								test_t_chain.c)
 
 OBJS					=		$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

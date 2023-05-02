@@ -5,11 +5,12 @@
 
 typedef struct s_chain
 {
-     int                nb;
-     int                index;
-	 int				a_voir;
-     struct s_chain*    prev;
-     struct s_chain*    next;
+   int               nb;
+   int               index;
+   int				   cout;
+   int               cal_cout;
+   struct s_chain   *prev;
+   struct s_chain   *next;
 }  t_chain;
 
 typedef struct s_sct
@@ -35,7 +36,11 @@ int         ft_find_nb(char *nptr);
 void        ft_feed_tab(long int **tab, int size, char **argv);
 void        ft_number(char **argv, t_tab* tab);
 int         ft_check_double(t_tab* tab, int size);
-//void		ft_init_list();
+int	   	ft_init_list(t_tab *tab, t_chain **head, t_chain **tail);
+int         ft_new_node(t_chain **head, t_chain **tail);
+void        ft_free_list(t_chain **head);
+void        ft_indexing(t_tab *tab, t_chain **head);
+void        ft_main_lst(t_tab *tab);
 ////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////TEST//////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
