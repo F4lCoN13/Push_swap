@@ -39,7 +39,7 @@ int         ft_check_double(t_tab* tab, int size);
 int	   	ft_init_list(t_tab *tab, t_chain **head, t_chain **tail);
 int         ft_new_node(t_chain **head, t_chain **tail);
 void        ft_free_list(t_chain **head);
-void        ft_indexing(t_tab *tab, t_chain **head);
+//void        ft_indexing(t_tab *tab, t_chain **head);
 void        ft_main_lst(t_tab *tab);
 ////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////TEST//////////////////////////////////////////
