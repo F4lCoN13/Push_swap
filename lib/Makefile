@@ -103,7 +103,8 @@ SRCS			=	$(addprefix $(SRC_DIR)/, 							 \
 				libft/ft_lstdelone.c    							    \
 				libft/ft_lstclear.c     							    \
 				libft/ft_lstiter.c      							    \
-				libft/ft_lstmap.c)      
+				libft/ft_lstmap.c 	     								 \
+				libft/ft_swap.c)
 
 
 OBJS		=	$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

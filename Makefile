@@ -48,6 +48,7 @@ SRCS					=		$(addprefix $(SRC_DIR)/, 							\
 								error_handling/find_error.c						\
 								error_handling/find_error_additional.c			\
 								chain_lists/init_list.c								\
+								chain_lists/init_indexing_int.c					\
 								test_t_chain.c)
 
 OBJS					=		$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

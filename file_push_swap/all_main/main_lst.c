@@ -17,14 +17,12 @@ void ft_main_lst(t_tab *tab)
       tab->flag = -1;
       return ;
    }
-   else
+   ft_indexing(tab, &head_A);
+   p = head_A;
+   while (i < tab->size)
    {
-      p = head_A;
-      while (i < tab->size)
-      {
-         ft_printf("\nChaine [%d]:\nNb = %d\n", i, p->nb);
-         p = p->next;
-         i++;
-      }
+      ft_printf("\nChaine [%d]:\nNb = %d\nIndex = %d", i, p->nb, p->index);
+      p = p->next;
+      i++;
    }
 }

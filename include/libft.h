@@ -72,4 +72,5 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void		ft_putstr(char *str);
 void		ft_putnbr(int nb);
 const char	*ft_strstr(const char *str, char to_find);
+void     ft_swap(int *tab, int *bat);
 #endif
