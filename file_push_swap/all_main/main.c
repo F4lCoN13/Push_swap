@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:56:10 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/04/27 14:18:45 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/05/03 12:58:56 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,6 @@ int   main(int argc, char **argv)
       ft_putstr_fd("Error\n", 2);
       return (0);
 	}
-//	ft_print_chain(tail);
 	printf("\nc'est bon ca marche !!! \n");
 	return (0);
 }
-
-///////////////////////////////////////////////////////////////////////////////
-////////////////////////Fonction de test//////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////
-   
-   /* TEST DES ARGUMENTS*/
-
-   /*printf("\nSize main = %d", tab.size);
-   printf("\nFlag main = %d\n", tab.flag);
-   while (i < tab.size)
-   {
-      printf("\nTab main = %ld", tab.t[i]);
-      i++;
-   }*/
-
-   /* TEST DE TEST LIST CHAINE*/
-    
-	/*i = 1;
-	while (argv[i])
-	{
-		ft_test_chain(&head, &tail, i, ft_atoi(argv[i]));
-		i++;
-   }*/

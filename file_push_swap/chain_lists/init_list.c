@@ -6,11 +6,30 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:42:56 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/04/27 13:49:51 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/05/03 14:12:56 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/headerpush_swap.h"
+
+////////////////////////////////////////////////////////////////////////////////
+/////////////FR: Fonctions qui remplis les nombres des maillons/////////////////
+////////////////EN: Function that fill the number of node///////////////////////
+////////////////////////////////////////////////////////////////////////////////
+void	ft_feed_lst(t_tab *tab, t_chain **head)
+{
+	int		i;
+	t_chain	*p;
+
+	i = 0;
+	p = *head;
+	while (p != NULL)
+	{
+		p->nb = tab->t[i];
+		i++;
+		p = p->next;
+	}
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 /////////////FR: Fonctions qui sert a cree et ajouter des maillons//////////////
@@ -71,7 +90,6 @@ int  ft_init_list(t_tab *tab, t_chain **head, t_chain **tail)
    {
       if (ft_new_node(&*head, &*tail) == -1)
          return (-1);
-      (*tail)->nb = tab->t[i];
       i++;
    }
    return (1);

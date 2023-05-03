@@ -1,5 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_indexing_int.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/03 13:01:34 by paumarc2          #+#    #+#             */
+/*   Updated: 2023/05/03 14:47:00 by paumarc2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/headerpush_swap.h"
 
+////////////////////////////////////////////////////////////////////////////////
+/////////////FR: Fonctions qui va trier mon nouveau tableau/////////////////////
+/////////////////EN: Function that sort my new array////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 void	ft_sort_int_tab(int *tab, int size)
 {
 	int	i;
@@ -19,6 +35,10 @@ void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/////////////FR: Fonctions qui sert a remplir mon nouveau tableau//////////////
+///////////EN: Function that serve to creates and add get other node////////////
+////////////////////////////////////////////////////////////////////////////////
 void  ft_feed_and_sort(t_tab *tab, int *sort)
 {
    int   i;
@@ -32,6 +52,10 @@ void  ft_feed_and_sort(t_tab *tab, int *sort)
    ft_sort_int_tab(sort, tab->size);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/////////////FR: Fonctions qui va me permettre d'indexer mes nombres////////////
+////////////////EN: Function that serve to index all my numbers/////////////////
+////////////////////////////////////////////////////////////////////////////////
 void  ft_indexing(t_tab *tab, t_chain **head)
 {
    int   i;
@@ -55,4 +79,5 @@ void  ft_indexing(t_tab *tab, t_chain **head)
      p->index = i;
      p = p->next;
    }
+   free(sort);
 }
