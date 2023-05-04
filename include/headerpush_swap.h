@@ -6,9 +6,9 @@
 typedef struct s_chain
 {
    int               nb;
-   int               index;
-   int				   cout;
-   int               cal_cout;
+   int              index;
+   int				cout;
+   int              cal_cout;
    struct s_chain   *prev;
    struct s_chain   *next;
 }  t_chain;
@@ -42,6 +42,7 @@ void        ft_free_list(t_chain **head);
 void        ft_indexing(t_tab *tab, t_chain **head);
 void		ft_feed_lst(t_tab *tab, t_chain **head);
 void        ft_main_lst(t_tab *tab);
-int			ft_inst(char *instruction, int i, t_chain **head_A, t_chain **tail_A/*, t_chain **head_B, t_chain **tail_B*/);
+int			ft_inst(char *instruction, int i, t_chain **head_A, t_chain **tail_A, t_chain **head_B, t_chain **tail_B);
 int			ft_sa(t_chain **head_A, t_chain **tail_A);
+void		ft_delete_between(int	pst, t_chain **head);
 #endif

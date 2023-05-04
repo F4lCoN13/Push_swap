@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:56:10 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/05/03 12:58:56 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/05/04 10:29:38 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int   main(int argc, char **argv)
       ft_putstr_fd("Error\n", 2);
       return (0);
    }
+   if (tab.size == 1)
+	return (0);
    ft_main_lst(&tab);
    if (tab.flag == -1)
    {

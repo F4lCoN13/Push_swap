@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 13:42:56 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/05/03 14:12:56 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/05/04 11:03:56 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,17 @@ int   ft_new_node(t_chain **head, t_chain **tail)
 ////////////////////////////////////////////////////////////////////////////////
 int  ft_init_list(t_tab *tab, t_chain **head, t_chain **tail)
 {
-   int i;
+	int i;
 
 
-   i = 0;
-   while (i < (tab->size))
-   {
-      if (ft_new_node(&*head, &*tail) == -1)
-         return (-1);
-      i++;
-   }
-   return (1);
+	i = 0;
+	while (i < (tab->size))
+	{
+		if (ft_new_node(&*head, &*tail) == -1)
+			return (-1);
+		(*tail)->nb = 0;
+		(*tail)->index = 0;
+		i++;
+	}
+	return (1);
 }

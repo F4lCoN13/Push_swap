@@ -14,7 +14,7 @@ void ft_main_lst(t_tab *tab)
    i = 0;
    head_A = NULL;
    head_B = NULL;
-   if ((ft_init_list(tab, &head_A, &tail_A) == -1) || (ft_init_list(tab, &head_B, &tail_B) == -1))
+   if ((ft_init_list(tab, &head_A, &tail_A) == -1) || (ft_init_list(tab, &head_B, &tail_B) == -1))// penser a enlever le b qui ne sers a rien initialiser ici
    {
       ft_free_list(&head_A);
       ft_free_list(&head_B);
@@ -26,13 +26,43 @@ void ft_main_lst(t_tab *tab)
    ////////////////////////////////////////////////////////////////////////////////////////////////////
    /////////////////////////////////////Info///////////////////////////////////////////////////////////
    p = head_A;
+   ft_printf("\nhead A\n");
    while (p != NULL)
    {
       ft_printf("\nMaillons [%d]: Nb = %d Index = [%d]", i, p->nb, p->index);
       p = p->next;
       i++;
    }
-   ft_inst("sa", i, &head_A, &tail_A);
+   ft_printf("\nhead B\n");
+   p = head_B;
+   i = 0;
+   p->nb = 1;
+   p->next->nb = 2;
+   while (p != NULL)
+   {
+      ft_printf("\nMaillons [%d]: Nb = %d Index = [%d]", i, p->nb, p->index);
+      p = p->next;
+      i++;
+   }
+   ft_inst("ss", i, &head_A, &tail_A, &head_B, &tail_B);
+   p = head_A;
+   i = 0;
+   ft_printf("\nhead A\n");
+   while (p != NULL)
+   {
+      ft_printf("\nMaillons [%d]: Nb = %d Index = [%d]", i, p->nb, p->index);
+      p = p->next;
+      i++;
+   }
+   ft_printf("\nhead B\n");
+   p = head_B;
+   i = 0;
+   while (p != NULL)
+   {
+      ft_printf("\nMaillons [%d]: Nb = %d Index = [%d]", i, p->nb, p->index);
+      p = p->next;
+      i++;
+   }
 }
 //Penser a proteger les cas ou :
 // - il n y a qu un seul nombre 
