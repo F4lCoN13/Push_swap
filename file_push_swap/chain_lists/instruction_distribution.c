@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:03:14 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/05/04 11:42:37 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:23:22 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ int	ft_inst(char *instruction, int i, t_chain **head_A, t_chain **tail_A, t_chai
 	if ((ft_strncmp(instruction, "ss", 2) == 0))
 		i = (ft_sa(&*head_B, &*tail_B)) + (ft_sa(&*head_A, &*tail_A));
 	if ((ft_strncmp(instruction, "pa", 2) == 0))
-		i = ft_printf("\ninstr = %s\n", instruction);
+		i = ft_pa(&*head_A, &*head_B);
 	if ((ft_strncmp(instruction, "pb", 2) == 0))
-		i = ft_printf("\ninstr = %s\n", instruction);
+		i = ft_pa(&*head_B, &*head_A);
 	if ((ft_strncmp(instruction, "ra", 2) == 0))
-		i = ft_printf("\ninstr = %s\n", instruction);
+		i = ft_ra(&*head_A, &*tail_A);
 	if ((ft_strncmp(instruction, "rb", 2) == 0))
-		i = ft_printf("\ninstr = %s\n", instruction);
+		i = ft_ra(&*head_B, &*tail_B);
 	if ((ft_strncmp(instruction, "rr", 2) == 0))
-		i = ft_printf("\ninstr = %s\n", instruction);
+		i = ((ft_ra(&*head_A, &*tail_A)) + (ft_ra(&*head_B, &*tail_B)));
 	if ((ft_strncmp(instruction, "rra", 3) == 0))
 		i = ft_printf("\ninstr = %s\n", instruction);
 	if ((ft_strncmp(instruction, "rrb", 3) == 0))

@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 13:47:24 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/05/04 12:02:13 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/05/04 13:57:48 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ///////////////FR: Fonctions qui intervertis head et tail///////////////////////
 //////////////////EN: Functions that swap head and tail/////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-void	ft_2_sa(t_chain **head, t_chain **tail)
+void	ft_just_2_in_pile(t_chain **head, t_chain **tail)
 {
 	t_chain *tmp;
 
@@ -43,7 +43,7 @@ int	ft_sa(t_chain **head, t_chain **tail)
 	if ((((*head)->nb == 1) && ((*tail)->nb == 1)) || (*head) == (*tail))
 		return (0);
 	if (*tail == p->next)
-		ft_2_sa(head, tail);
+		ft_just_2_in_pile(head, tail);
 	else
 	{
 		ft_delete_between(1, head);

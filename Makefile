@@ -6,7 +6,7 @@
 #    By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/31 12:03:00 by paumarc2          #+#    #+#              #
-#    Updated: 2023/05/04 12:01:23 by paumarc2         ###   ########.fr        #
+#    Updated: 2023/05/04 15:25:40 by paumarc2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,9 @@ SRCS					=		$(addprefix $(SRC_DIR)/, 							\
 								chain_lists/instruction_distribution.c				\
 								chain_lists/delete_chain.c							\
 								chain_lists/sa.c									\
+								chain_lists/pa.c									\
+								chain_lists/ra.c									\
+								chain_lists/rra.c									\
 								test_t_chain.c)
 
 OBJS					=		$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

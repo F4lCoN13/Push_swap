@@ -43,6 +43,11 @@ void        ft_indexing(t_tab *tab, t_chain **head);
 void		ft_feed_lst(t_tab *tab, t_chain **head);
 void        ft_main_lst(t_tab *tab);
 int			ft_inst(char *instruction, int i, t_chain **head_A, t_chain **tail_A, t_chain **head_B, t_chain **tail_B);
-int			ft_sa(t_chain **head_A, t_chain **tail_A);
+int			ft_sa(t_chain **head, t_chain **tail);
+int			ft_pa(t_chain **head_trg, t_chain **head_src);
+int			ft_ra(t_chain **head, t_chain **tail);
+int			ft_rra(t_chain **head, t_chain **tail);
+
 void		ft_delete_between(int	pst, t_chain **head);
+void		ft_delete_first(t_chain **head);
 #endif

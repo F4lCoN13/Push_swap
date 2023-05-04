@@ -36,15 +36,20 @@ void ft_main_lst(t_tab *tab)
    ft_printf("\nhead B\n");
    p = head_B;
    i = 0;
-   p->nb = 1;
-   p->next->nb = 2;
+   p->nb = 17;
+   p->index = 9;
+   p->next->nb = 24;
+   p->next->index = 10;
    while (p != NULL)
    {
       ft_printf("\nMaillons [%d]: Nb = %d Index = [%d]", i, p->nb, p->index);
       p = p->next;
       i++;
    }
-   ft_inst("ss", i, &head_A, &tail_A, &head_B, &tail_B);
+   ////////////////////////////////////////////////////////////////////////////////////////////////////
+   ft_inst("rra", i, &head_A, &tail_A, &head_B, &tail_B);
+   ////////////////////////////////////////////////////////////////////////////////////////////////////
+   ft_printf("\n AFTER TEST =\n");
    p = head_A;
    i = 0;
    ft_printf("\nhead A\n");
@@ -54,8 +59,8 @@ void ft_main_lst(t_tab *tab)
       p = p->next;
       i++;
    }
-   ft_printf("\nhead B\n");
-   p = head_B;
+  ft_printf("\nhead B\n");
+  p = head_B;
    i = 0;
    while (p != NULL)
    {
