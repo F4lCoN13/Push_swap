@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 11:56:55 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/05/04 16:06:50 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/05/05 14:06:07 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ void	ft_delete_between(int	pst, t_chain **head)
 void	ft_delete_first(t_chain **head, t_chain **tail)
 {
 	t_chain *tmp;
-	
+
 	if (((*head) != (*tail)) && (*head))
 	{
+      ft_printf("\nTail != head ");
 		tmp = (*head)->next;
 		tmp->prev = NULL;
 		(*head)->next = NULL;
@@ -53,9 +54,9 @@ void	ft_delete_first(t_chain **head, t_chain **tail)
 	}
 	else if (((*head) == (*tail)) && (*head))
 	{
-		(*head)->next
-		(*head) == NULL;
-		(*head)->
+		(*head)->next = NULL;
+		(*head)->prev = NULL;
+      (*head) = NULL;
 	}
 }
 
@@ -71,4 +72,18 @@ void	ft_delete_last(t_chain **head)
 	tmp->prev = NULL;
 	(*head)->next = NULL;
 	(*head) = tmp;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//////////FR: Fonctions qui supprime le dernier  maillons de la chaine/////////
+///////////////////EN: This Function deletes the last node//////////////////////
+////////////////////////////////////////////////////////////////////////////////
+void	ft_delete_last_node(t_chain **tail)
+{
+	t_chain *tmp;
+
+	tmp = (*tail)->prev;
+	tmp->next = NULL;
+	(*tail)->prev = NULL;
+	(*tail) = tmp;
 }

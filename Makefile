@@ -6,7 +6,7 @@
 #    By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/31 12:03:00 by paumarc2          #+#    #+#              #
-#    Updated: 2023/05/04 15:25:40 by paumarc2         ###   ########.fr        #
+#    Updated: 2023/05/05 16:20:53 by paumarc2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,20 +42,21 @@ CFLAGS				=		-Wall -Wextra -Werror -g3
 
 LDFLAGS				=		lib/libmy_lib.a 
 
-SRCS					=		$(addprefix $(SRC_DIR)/, 							\
-								all_main/main.c										\
-								all_main/main_lst.c									\
+SRCS					=		$(addprefix $(SRC_DIR)/, 					   		\
+								all_main/main.c								   		\
+								all_main/main_lst.c							         \
+                        all_main/main_algo.c                            \
 								error_handling/find_error.c							\
 								error_handling/find_error_additional.c				\
-								chain_lists/init_list.c								\
+								chain_lists/init_list.c						   		\
 								chain_lists/init_indexing_int.c						\
 								chain_lists/instruction_distribution.c				\
-								chain_lists/delete_chain.c							\
-								chain_lists/sa.c									\
-								chain_lists/pa.c									\
-								chain_lists/ra.c									\
-								chain_lists/rra.c									\
-								test_t_chain.c)
+								chain_lists/delete_chain.c				   			\
+								chain_lists/sa.c					      				\
+								chain_lists/pa.c			      						\
+								chain_lists/ra.c	      								\
+								chain_lists/rra.c                               \
+                        algo/algo_3.c)
 
 OBJS					=		$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

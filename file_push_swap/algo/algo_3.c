@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ra.c                                               :+:      :+:    :+:   */
+/*   algo_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 15:01:05 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/05/05 14:06:39 by paumarc2         ###   ########.fr       */
+/*   Created: 2023/05/05 16:21:22 by paumarc2          #+#    #+#             */
+/*   Updated: 2023/05/05 16:26:22 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/headerpush_swap.h"
 
-int	ft_ra(t_chain **head, t_chain **tail)
+void  ft_algo_size_3(t_tab *tab, t_chain **head, t_chain **tail)
 {
-	t_chain *tmp;
-	
-	if ((*head) && ((*head) != (*tail)))
-	{
-		tmp = (*head);
-		ft_delete_first(&*head, (&*tail));
-		tmp->next = NULL;
-		tmp->prev = (*tail);
-		(*tail)->next = tmp;
-		(*tail) = tmp;
-	}
-	return (0);
+   ft_printf("\n tab = %d", tab->size);
+   ft_printf("\n head = %d", (*head)->nb);
+   ft_printf("\n tail = %d", (*tail)->nb);
 }
