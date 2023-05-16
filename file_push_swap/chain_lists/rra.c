@@ -21,7 +21,6 @@ int	ft_rra(t_chain **head, t_chain **tail)
 {
 	t_chain *tmp;
   
-   ft_printf("\nJE SUIS LA head = %d && %d\n", (*head)->nb, (*head)->index);
 	tmp = (*tail);
    ft_delete_last_node(&*tail);
    (*head)->prev = tmp;

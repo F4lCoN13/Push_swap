@@ -16,7 +16,7 @@
 //////////FR: Fonctions qui deplace 1er nb de src sur 1er nb  trg///////////////
 //EN: Functions that move the first element of src into the first element of trg
 ////////////////////////////////////////////////////////////////////////////////
-int	ft_pa(t_chain **head_trg, t_chain **head_src,t_chain **tail_src)
+int	ft_pa(t_chain **head_trg, t_chain **tail_trg, t_chain **head_src,t_chain **tail_src)
 {
 	t_chain *tmp;
 
@@ -25,7 +25,12 @@ int	ft_pa(t_chain **head_trg, t_chain **head_src,t_chain **tail_src)
 	{
 		ft_delete_first(&*head_src, &*tail_src);
       if ((*head_trg) == NULL)
+      {
+	   	tmp->prev = NULL;
+	   	tmp->next = NULL;
          (*head_trg) = tmp;
+         (*tail_trg) = (*head_trg);
+      }
       else
       {
 	   	(*head_trg)->prev = tmp;

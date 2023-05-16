@@ -46,7 +46,6 @@ void	ft_delete_first(t_chain **head, t_chain **tail)
 
 	if (((*head) != (*tail)) && (*head))
 	{
-      ft_printf("\nTail != head ");
 		tmp = (*head)->next;
 		tmp->prev = NULL;
 		(*head)->next = NULL;

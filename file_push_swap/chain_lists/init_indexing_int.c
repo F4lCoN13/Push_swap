@@ -76,7 +76,7 @@ void  ft_indexing(t_tab *tab, t_chain **head)
      i = 0;
      while (p->nb != sort[i])
         i++;
-     p->index = i;
+     p->index = i + 1;
      p = p->next;
    }
    free(sort);

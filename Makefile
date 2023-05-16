@@ -56,7 +56,8 @@ SRCS					=		$(addprefix $(SRC_DIR)/, 					   		\
 								chain_lists/pa.c			      						\
 								chain_lists/ra.c	      								\
 								chain_lists/rra.c                               \
-                        algo/algo_3.c)
+								algo/util_1.c												\
+                        algo/algo_3_and_5.c)
 
 OBJS					=		$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
