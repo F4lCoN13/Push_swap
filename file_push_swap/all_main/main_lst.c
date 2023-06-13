@@ -10,6 +10,7 @@ void ft_main_lst(t_tab *tab)
    sv.head_b = NULL;
    sv.tail_a = NULL;
    sv.tail_b = NULL;
+   
    if (ft_init_list(tab, &sv/*&head_A, &tail_A*/) == -1)
    {
       ft_free_list(&sv.head_a);

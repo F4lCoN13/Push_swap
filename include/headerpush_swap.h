@@ -8,14 +8,16 @@ typedef struct s_chain
    int               nb;
    int               index;
    int               cout;
+   int               pst_node;
+   int               total_node;
    int               cal_cout;
    struct s_chain    *prev;
    struct s_chain    *next;
 }  t_chain;
 
 typedef struct s_sv
-{
-   t_chain  *head_a;
+
+   t_chain  *head_
    t_chain  *tail_a;
    t_chain  *head_b;
    t_chain  *tail_b;
@@ -75,5 +77,6 @@ void        ft_algo_size_100(t_tab *tab, t_sv *sv);
 
 int         ft_array_sort(t_chain **head);
 void        ft_real_sa(t_tab *tab, t_chain **head, t_chain **tail);
-void        ft_find_cost_for_pile(t_tab *tab, t_chain *head, t_chain *tail);
+void        ft_find_cost_for_pile(t_tab *tab, t_chain *head/*, t_chain *tail*/);
+void        ft_pst_node(t_chain **chain);
 #endif
