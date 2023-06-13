@@ -4,28 +4,22 @@
 
 void ft_main_lst(t_tab *tab)
 {
-   t_chain *head_A;
-   t_chain *head_B;
-   t_chain *tail_A;
-   t_chain *tail_B;
-   /*t_chain *p;
-   int   i;
+   t_sv   sv;
 
-   i = 0;*/
-   head_A = NULL;
-   tail_B = NULL;
-   head_B = NULL;
-   tail_B = NULL;
-   if (ft_init_list(tab, &head_A, &tail_A) == -1)
+   sv.head_a = NULL;
+   sv.head_b = NULL;
+   sv.tail_a = NULL;
+   sv.tail_b = NULL;
+   if (ft_init_list(tab, &sv/*&head_A, &tail_A*/) == -1)
    {
-      ft_free_list(&head_A);
-      ft_free_list(&head_B);
+      ft_free_list(&sv.head_a);
+      ft_free_list(&sv.head_b);
       tab->flag = -1;
       return ;
    }
-   ft_feed_lst(tab, &head_A);
-   ft_indexing(tab, &head_A);
-   ft_main_algo(tab, &head_A, &tail_A, &head_B, &tail_B);
+   ft_feed_lst(tab, &sv.head_a);
+   ft_indexing(tab, &sv.head_a);
+   ft_main_algo(tab, &sv);
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////Info///////////////////////////////////////////////////////////
@@ -81,4 +75,5 @@ void ft_main_lst(t_tab *tab)
 //Penser a proteger les cas ou :
 // - il n y a qu un seul nombre 
 // - il y en a 2
+//
 //

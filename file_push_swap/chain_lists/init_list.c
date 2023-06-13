@@ -53,7 +53,7 @@ void  ft_free_list(t_chain **head)
 /////////////FR: Fonctions qui sert a cree et ajouter des maillons//////////////
 ///////////EN: Function that serve to creates and add get other node////////////
 ////////////////////////////////////////////////////////////////////////////////
-int   ft_new_node(t_chain **head, t_chain **tail)
+int   ft_new_node(t_sv *sv)
 {
    t_chain *New_Node;
    
@@ -61,17 +61,17 @@ int   ft_new_node(t_chain **head, t_chain **tail)
    if (!New_Node)
       return (-1);
    New_Node->next = NULL;
-   if (*head == NULL)
+   if (sv->head_a == NULL)
    {
       New_Node->prev = NULL;
-      *head = New_Node;
-      *tail = New_Node;
+      sv->head_a = New_Node;
+      sv->tail_a = New_Node;
    }
    else
    {
-      New_Node->prev = *tail;
-      (*tail)->next = New_Node;
-      *tail = New_Node;
+      New_Node->prev = sv->tail_a;
+      (sv->tail_a)->next = New_Node;
+      sv->tail_a = New_Node;
    }
    return (1);
 }
@@ -80,7 +80,7 @@ int   ft_new_node(t_chain **head, t_chain **tail)
 ///FR: lance la creation de la pile A et remplis chaque maillons avec un int////
 //////EN: lauch the creation of stack A and fill each node with an integer//////
 ////////////////////////////////////////////////////////////////////////////////
-int  ft_init_list(t_tab *tab, t_chain **head, t_chain **tail)
+int  ft_init_list(t_tab *tab, t_sv *sv)
 {
 	int i;
 
@@ -88,10 +88,10 @@ int  ft_init_list(t_tab *tab, t_chain **head, t_chain **tail)
 	i = 0;
 	while (i < (tab->size))
 	{
-		if (ft_new_node(&*head, &*tail) == -1)
+		if (ft_new_node(sv) == -1)
 			return (-1);
-		(*tail)->nb = 0;
-		(*tail)->index = 0;
+		(sv->tail_a)->nb = 0;
+		(sv->tail_a)->index = 0;
 		i++;
 	}
 	return (1);
