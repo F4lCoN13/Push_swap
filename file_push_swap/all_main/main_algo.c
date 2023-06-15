@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 14:59:18 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/06/13 15:50:10 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:38:31 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void   ft_main_algo(t_tab *tab, t_sv *sv) 
 {
-  // t_chain  *p;
-  // t_chain  *s;
+   //t_chain  *p;
+   //t_chain  *s;
 
-  // s = NULL;
+   //s = NULL;
   /* p = *head_A;
    ft_printf("\nft_algo Avant tri =\n\n");
    while (p != NULL)
@@ -33,14 +33,14 @@ void   ft_main_algo(t_tab *tab, t_sv *sv)
    else if (tab->size <= 100)
       ft_algo_size_100(tab, sv);
    //=================================================================================
-  // p = sv->head_a;
+   //p = sv->head_a;
    /*ft_printf("\ncout =\n\n");
    while (p != NULL)
    {
       ft_printf("p cout = %d\n", p->cout);
       p = p->next;
    }*/
-  /* p = sv->head_a;
+   /*p = sv->head_a;
    if (sv->head_b !=NULL)
    {
       ft_printf("\n B existe");

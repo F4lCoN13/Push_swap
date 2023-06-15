@@ -16,8 +16,8 @@ typedef struct s_chain
 }  t_chain;
 
 typedef struct s_sv
-
-   t_chain  *head_
+{
+   t_chain  *head_a;
    t_chain  *tail_a;
    t_chain  *head_b;
    t_chain  *tail_b;
@@ -79,4 +79,16 @@ int         ft_array_sort(t_chain **head);
 void        ft_real_sa(t_tab *tab, t_chain **head, t_chain **tail);
 void        ft_find_cost_for_pile(t_tab *tab, t_chain *head/*, t_chain *tail*/);
 void        ft_pst_node(t_chain **chain);
+
+void        tiny_sort_A(t_sv *sv, t_chain **head);
+void        tiny_sort_B(t_sv *sv, t_chain **head);
+t_chain     *find_highest(t_chain *head);
+t_chain     *find_lowest(t_chain *head);
+void        ft_where_put_the_nb(t_sv *sv);
+int         ft_res_absolue(int a, int b);
+void        ft_tchec_better_place_up(int mid, t_sv *sv);
+void        ft_tchec_better_place_down(int mid, t_sv *sv);
+
+int         ft_up(int mid, t_sv *sv);
+int         ft_down(int mid, t_sv *sv);
 #endif
