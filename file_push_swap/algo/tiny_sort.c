@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 11:28:07 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/06/15 13:52:35 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/06/16 13:39:55 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,25 @@ void  tiny_sort_B(t_sv *sv, t_chain **head)
       ft_inst("rrb", sv);
    if ((*head)->index > (*head)->next->index)
       ft_inst("sa", sv);
+}
+
+int   ft_all_inter(short inter, t_sv *sv)
+{
+   t_chain  *p;
+   int      tab;
+
+   tab = 0;
+   if (sv->head_b != NULL)
+   {
+      p = sv->head_b;
+      while (p != NULL)
+      {
+         tab++;
+         p = p->next;
+      }
+   }
+   if (tab == inter)
+      return (0);
+   else
+      return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:39:40 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/06/15 15:39:19 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:35:35 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,17 +80,17 @@ void  ft_find_pb(t_tab *tab, t_sv *sv)
    {
       if (tab->ret > 0)
       {
-         if ((sv->tail_b) && (sv->head_b != sv->tail_b) && (sv->head_b < sv->tail_b))
+         /*if ((sv->tail_b) && (sv->head_b != sv->tail_b) && (sv->head_b < sv->tail_b))
             ft_inst("rr", sv);
-         else 
+         else*/ 
             ft_inst("ra", sv);
          i++;
       }
       else if (tab->ret < 0)
       {
-         if ((sv->tail_b) && (sv->head_b != sv->tail_b) && (sv->head_b > sv->tail_b))
+         /*if ((sv->tail_b) && (sv->head_b != sv->tail_b) && (sv->head_b > sv->tail_b))
             ft_inst("rrr", sv);
-         else 
+         else*/ 
             ft_inst("rra", sv);
          i--;
       }
@@ -114,18 +114,19 @@ void  ft_pre_sort_b(/*t_tab *tab,*/ t_sv *sv)//, int inter)
    }
 }
 
-void  ft_inter(t_tab *tab, t_sv *sv, int inter)
+void  ft_inter(t_tab *tab, t_sv *sv, short inter)
 {
    int   i;
 
    i = 0;
-   while (i < inter)
+   while (ft_all_inter(inter, sv) != 0)
    {
       ft_find_nb_in_inter(sv, inter);
       ft_find_less_cost(tab, sv);
       if (tab->ret == 0 && sv->head_a->cout != 1)
          ft_inst("rra", sv);
       ft_find_pb(tab, sv);
+      ft_pst_node(&sv->head_b);
       //==========================================
       if (sv->head_a->cout == 1)
          ft_where_put_the_nb(sv);

@@ -72,7 +72,7 @@ void	   	ft_delete_last_node(t_chain **tail);
 
 void        ft_algo_size_3(t_chain **head, t_chain **tail, t_sv *sv);
 void        ft_algo_size_5(t_tab *tab, t_sv *sv);
-void        ft_inter(t_tab *tab, t_sv *sv, int inter);
+void        ft_inter(t_tab *tab, t_sv *sv, short inter);
 void        ft_algo_size_100(t_tab *tab, t_sv *sv);
 
 int         ft_array_sort(t_chain **head);
@@ -89,6 +89,8 @@ int         ft_res_absolue(int a, int b);
 void        ft_tchec_better_place_up(int mid, t_sv *sv);
 void        ft_tchec_better_place_down(int mid, t_sv *sv);
 
-int         ft_up(int mid, t_sv *sv);
-int         ft_down(int mid, t_sv *sv);
+void        ft_bottom_b(t_sv *sv);
+void        ft_top_b(t_sv *sv);
+int         ft_all_inter(short inter, t_sv *sv);
+
 #endif
