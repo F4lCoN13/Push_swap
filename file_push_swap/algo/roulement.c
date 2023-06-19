@@ -6,17 +6,11 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:48:35 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/06/19 13:26:42 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:06:30 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/headerpush_swap.h"
-
-void  ft_sa_top(t_sv *sv)
-{
-   if (sv->head_b->index < sv->head_b->next->index)
-      ft_inst("sb", sv);
-}
 
 void  ft_top_b(t_sv *sv)
 {
@@ -27,10 +21,9 @@ void  ft_top_b(t_sv *sv)
    a = sv->head_a->index;
    i = 0;
    p = sv->head_b;
-   while (i++ < 2 && a < p->index) 
+   while (i++ < 25 && a < p->index) 
    {
       p = p->next;
-      ft_sa_top(sv);
       ft_inst("rb", sv);
    }
    if (sv->head_b->index > a)
@@ -55,7 +48,7 @@ void  ft_bottom_b(t_sv *sv)
    a = sv->head_a->index;
    i = 0;
    p = sv->tail_b;
-   while (i++ < 2 && a < p->index) 
+   while (i++ < 25 && a < p->index) 
    {
       p = p->prev;
       ft_inst("rrb", sv);

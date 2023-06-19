@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:39:40 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/06/16 16:35:35 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:32:58 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,9 +129,12 @@ void  ft_inter(t_tab *tab, t_sv *sv, short inter)
       ft_pst_node(&sv->head_b);
       //==========================================
       if (sv->head_a->cout == 1)
-         ft_where_put_the_nb(sv);
+         ft_where_put_the_nb(sv, inter);
       //==========================================
       //ft_pre_sort_b(/*tab,*/ sv);//,inter);
       i++;
    }
 }
+
+// Calculer le nombre de cout pour envoyer un nombre de l autre cote par rapport a ca position (nombre de mouveament par rapport a ca place ) Regarder la moitie qui coute le moins pour le roulememnt afin d avoir les bon chiffres 
+// Voir si c est possible de tourne

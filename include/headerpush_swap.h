@@ -84,7 +84,7 @@ void        tiny_sort_A(t_sv *sv, t_chain **head);
 void        tiny_sort_B(t_sv *sv, t_chain **head);
 t_chain     *find_highest(t_chain *head);
 t_chain     *find_lowest(t_chain *head);
-void        ft_where_put_the_nb(t_sv *sv);
+void        ft_where_put_the_nb(t_sv *sv, int inter);
 int         ft_res_absolue(int a, int b);
 void        ft_tchec_better_place_up(int mid, t_sv *sv);
 void        ft_tchec_better_place_down(int mid, t_sv *sv);
