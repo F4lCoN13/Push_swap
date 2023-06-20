@@ -39,58 +39,69 @@ typedef struct s_tab
    int         ret;
    int         pivot;
    int         size;
+   char        save_action;
 }  t_tab;
+
+//////////////////////////  INT  ///////////////////////////
+
+int         ft_find_nb(char *nptr);
+int			ft_init_list(t_tab *tab, t_sv *sv);
+int         ft_new_node(t_sv *sv);
+int			ft_sa(t_chain **head, t_chain **tail);
+int			ft_sb(t_chain **head, t_chain **tail);
+
+int			ft_pa(t_chain **head_trg, t_chain **tail_trg, t_chain **head_src, t_chain **tail_src);
+int			ft_ra(t_chain **head, t_chain **tail);
+int			ft_rra(t_chain **head, t_chain **tail);
+int         ft_array_sort(t_chain **head);
+int         ft_res_absolue(int a, int b);
+int         ft_check_double(t_tab* tab, int size);
+
+int         ft_all_inter(short inter, t_sv *sv);
+int         ft_rr(t_sv *sv);
+int         ft_rrr(t_sv *sv);
+
+
+
+//////////////////////////  VOID  ////////////////////////////
 
 void        ft_find_error_and_init_list(char ** argv, t_tab* tab);
 void        ft_test_chain(t_chain** head_ref, t_chain** tail_ref, int index, int value);
 void        ft_print_chain(t_chain* head_ref);
-int         ft_find_nb(char *nptr);
 void        ft_feed_tab(long int **tab, int size, char **argv);
 void        ft_number(char **argv, t_tab* tab);
-int         ft_check_double(t_tab* tab, int size);
-
-int			ft_init_list(t_tab *tab, t_sv *sv);
-int         ft_new_node(t_sv *sv);
 void        ft_free_list(t_chain **head);
 void        ft_indexing(t_tab *tab, t_chain **head);
-void	   	ft_feed_lst(t_tab *tab, t_chain **head);
 
+void	   	ft_feed_lst(t_tab *tab, t_chain **head);
 void        ft_main_lst(t_tab *tab);
 void        ft_main_algo(t_tab *tab, t_sv *sv);
-
 void			ft_inst(char *instruction, t_sv *sv);
-int			ft_sa(t_chain **head, t_chain **tail);
-int			ft_sb(t_chain **head, t_chain **tail);
-int			ft_pa(t_chain **head_trg, t_chain **tail_trg, t_chain **head_src, t_chain **tail_src);
-int			ft_ra(t_chain **head, t_chain **tail);
-int			ft_rra(t_chain **head, t_chain **tail);
-
 void  		ft_delete_between(int	pst, t_chain **head);
 void	   	ft_delete_first(t_chain **head, t_chain **tail);
 void	   	ft_delete_last(t_chain **head);
 void	   	ft_delete_last_node(t_chain **tail);
-
 void        ft_algo_size_3(t_chain **head, t_chain **tail, t_sv *sv);
+
 void        ft_algo_size_5(t_tab *tab, t_sv *sv);
 void        ft_inter(t_tab *tab, t_sv *sv, short inter);
 void        ft_algo_size_100(t_tab *tab, t_sv *sv);
-
-int         ft_array_sort(t_chain **head);
 void        ft_real_sa(t_tab *tab, t_chain **head, t_chain **tail);
 void        ft_find_cost_for_pile(t_tab *tab, t_chain *head/*, t_chain *tail*/);
 void        ft_pst_node(t_chain **chain);
-
 void        tiny_sort_A(t_sv *sv, t_chain **head);
 void        tiny_sort_B(t_sv *sv, t_chain **head);
-t_chain     *find_highest(t_chain *head);
-t_chain     *find_lowest(t_chain *head);
+
 void        ft_where_put_the_nb(t_sv *sv, int inter);
-int         ft_res_absolue(int a, int b);
 void        ft_tchec_better_place_up(int mid, t_sv *sv);
 void        ft_tchec_better_place_down(int mid, t_sv *sv);
-
 void        ft_bottom_b(t_sv *sv);
 void        ft_top_b(t_sv *sv);
-int         ft_all_inter(short inter, t_sv *sv);
+
+
+//////////////////////////  T_CHAIN  ////////////////////////////
+
+t_chain     *find_highest(t_chain *head);
+t_chain     *find_lowest(t_chain *head);
 
 #endif

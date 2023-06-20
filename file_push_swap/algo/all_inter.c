@@ -6,7 +6,7 @@
 /*   By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:39:40 by paumarc2          #+#    #+#             */
-/*   Updated: 2023/06/19 13:32:58 by paumarc2         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:37:06 by paumarc2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,11 @@ void  ft_find_less_cost(t_tab *tab, t_sv *sv)
    if (j < i)
       tab->ret = -j -1;
 }
-//          ===============================================================
-//AMELIORATION POSSIBLE EN REGARDANT DANS QUEL MOITIE DE LA PILE IL Y A LE PLUS DE NB RECHERCHER
-//          ===============================================================
 
 ////////////////////////////////////////////////////////////////////////////////
 //FR: BOUGER LES NB COMPRIS DANS INTER DANS CHAIN B
 ////////////////////////////////////////////////////////////////////////////////
-void  ft_find_pb(t_tab *tab, t_sv *sv)
+void  ft_go_to_switch_pile_and_pre_sort(t_tab *tab, t_sv *sv, int nb_in_b)
 {
    int   i;
 
@@ -80,40 +77,24 @@ void  ft_find_pb(t_tab *tab, t_sv *sv)
    {
       if (tab->ret > 0)
       {
-         /*if ((sv->tail_b) && (sv->head_b != sv->tail_b) && (sv->head_b < sv->tail_b))
-            ft_inst("rr", sv);
-         else*/ 
+         if (ft_rr(sv) == 0)
+               ft_inst("rr", sv);
+         else
             ft_inst("ra", sv);
          i++;
       }
       else if (tab->ret < 0)
       {
-         /*if ((sv->tail_b) && (sv->head_b != sv->tail_b) && (sv->head_b > sv->tail_b))
-            ft_inst("rrr", sv);
-         else*/ 
+         if (ft_rrr(sv) == 0)
+               ft_inst("rrr", sv);
+         else
             ft_inst("rra", sv);
          i--;
       }
    }
 }
 
-////////////////////////////////////////////////////////////////////////////////
-//FR: TRIER UN PETIT PEU B POUR OPTIMISER LA SUITE
-////////////////////////////////////////////////////////////////////////////////
-void  ft_pre_sort_b(/*t_tab *tab,*/ t_sv *sv)//, int inter)
-{
-
-   ft_pst_node(&sv->head_b);
-   if (sv->head_b->total_node > 1)
-   {
-      if (sv->head_b->total_node == 2 && sv->head_b->index < sv->head_b->next->index)
-          ft_inst("rb", sv);
-      else if (sv->head_b->total_node == 3)
-         tiny_sort_B(sv, &sv->head_b);
-
-   }
-}
-
+// FAIRE MON TRIE DE B EN MEME TEMPS QUE PB COMME CA JE PEUT FAIRE DES RRR ET DES RR
 void  ft_inter(t_tab *tab, t_sv *sv, short inter)
 {
    int   i;
@@ -125,13 +106,12 @@ void  ft_inter(t_tab *tab, t_sv *sv, short inter)
       ft_find_less_cost(tab, sv);
       if (tab->ret == 0 && sv->head_a->cout != 1)
          ft_inst("rra", sv);
-      ft_find_pb(tab, sv);
+      ft_go_to_switch_pile_and_pre_sort(tab, sv, i);
       ft_pst_node(&sv->head_b);
       //==========================================
-      if (sv->head_a->cout == 1)
+      if (sv->head_a->cout == 1 && i <= 3)
          ft_where_put_the_nb(sv, inter);
       //==========================================
-      //ft_pre_sort_b(/*tab,*/ sv);//,inter);
       i++;
    }
 }

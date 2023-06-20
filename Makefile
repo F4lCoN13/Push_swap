@@ -6,7 +6,7 @@
 #    By: paumarc2 <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/31 12:03:00 by paumarc2          #+#    #+#              #
-#    Updated: 2023/06/15 17:25:16 by paumarc2         ###   ########.fr        #
+#    Updated: 2023/06/20 11:14:49 by paumarc2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ SRCS					=		$(addprefix $(SRC_DIR)/, 					   		\
 								chain_lists/rra.c                               \
 								algo/util_1.c												\
 								algo/util_2.c												\
-								algo/util_3.c												\
+								algo/roulement.c												\
 								algo/tiny_sort.c												\
 								algo/algo_10.c												\
 								algo/find_sa.c												\
